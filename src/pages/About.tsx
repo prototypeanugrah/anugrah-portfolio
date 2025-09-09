@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { personalInfo } from '../utils/data'
+// import { personalInfo } from '../utils/data'
 
 const About = () => {
   const skills = [
@@ -71,7 +71,10 @@ const About = () => {
                     onError={(e) => {
                       // Fallback if image doesn't exist
                       e.currentTarget.style.display = 'none';
-                      e.currentTarget.nextElementSibling.style.display = 'block';
+                      const nextElement = e.currentTarget.nextElementSibling as HTMLElement;
+                      if (nextElement) {
+                        nextElement.style.display = 'block';
+                      }
                     }}
                   />
                   <div className="text-center" style={{ display: 'none' }}>

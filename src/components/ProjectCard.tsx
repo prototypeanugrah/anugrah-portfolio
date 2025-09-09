@@ -53,7 +53,10 @@ const ProjectCard = ({ project, index = 0 }: ProjectCardProps) => {
                 console.error(`❌ Image failed to load: ${project.imageUrl}`);
                 // Fallback to placeholder if image fails to load
                 e.currentTarget.style.display = 'none';
-                e.currentTarget.nextElementSibling.style.display = 'flex';
+                const nextElement = e.currentTarget.nextElementSibling as HTMLElement;
+                if (nextElement) {
+                  nextElement.style.display = 'flex';
+                }
               }}
             />
             {project.imagePlaceholder && (

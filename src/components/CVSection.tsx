@@ -4,12 +4,12 @@ import ExperienceCard from './ExperienceCard'
 import ProjectCard from './ProjectCard'
 
 const CVSection = () => {
-  const downloadCV = () => {
-    const link = document.createElement('a')
-    link.href = '/cv.pdf' // Place your CV in public folder
-    link.download = 'Anugrah_Vaishnav_CV.pdf'
-    link.click()
-  }
+  // const downloadCV = () => {
+  //   const link = document.createElement('a')
+  //   link.href = '/cv.pdf' // Place your CV in public folder
+  //   link.download = 'Anugrah_Vaishnav_CV.pdf'
+  //   link.click()
+  // }
 
   return (
     <section id="cv" className="py-20 bg-gradient-to-br from-dark-850 to-dark-800">

@@ -149,7 +149,7 @@ export const projects: Project[] = [
     type: 'AI Agent Project',
     duration: 'Recent',
     keywords: ['Multi-Agents System', 'LangGraph', 'LangChain'],
-    description: ["Developed a **multi-agent AI chatbot** for **personalized trail recommendations** by orchestrating location analysis, trail search, and real-time weather evaluation agents. Used **LangGraph** for agentic workflow and context understanding using **Claude LLM**"],
+    description: ["Developed a **multi-agent AI chatbot** for **personalized trail recommendations** by orchestrating location analysis, trail search, and real-time weather evaluation agents. Used **LangGraph** for agentic workflow and context understanding using **LLM APIs**"],
     links: [
       { type: 'github', url: 'https://github.com/prototypeanugrah/IntelliTrek', label: 'View on GitHub' }
     ],
@@ -165,7 +165,7 @@ export const projects: Project[] = [
   //   type: 'AI Agent Project',
   //   duration: 'Recent',
   //   keywords: ['AI Agents', 'RAG', 'LangChain'],
-  //   description: ["Built IntelliPDF AI agent, a PDF intelligence platform that enables advanced document search, summarization, and Q&A using **Claude LLM**"],
+  //   description: ["Built IntelliPDF AI agent, a PDF intelligence platform that enables advanced document search, summarization, and Q&A using **LLM APIs**"],
   //   links: [
   //     { type: 'github', url: 'https://github.com/prototypeanugrah/DocuSage-AI', label: 'View on GitHub' }
   //   ],
