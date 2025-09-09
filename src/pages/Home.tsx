@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import TypeWriter from '../components/TypeWriter'
 import { personalInfo, socialLinks } from '../utils/data'
+import profileImage from '../assets/images/profile.jpg'
 
 const Home = () => {
   return (
@@ -102,7 +103,7 @@ const Home = () => {
                 >
                   {/* Replace with actual profile image: place your photo in public/profile.jpg */}
                   <img 
-                    src="/profile.jpg" 
+                    src={profileImage} 
                     alt="Anugrah Vaishnav"
                     className="w-full h-full object-cover"
                     onError={(e) => {

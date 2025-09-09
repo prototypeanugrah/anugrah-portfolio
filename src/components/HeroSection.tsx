@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import CharacterTypeWriter from './CharacterTypeWriter'
 import { personalInfo, socialLinks } from '../utils/data'
+import profileImage from '../assets/images/profile.jpg'
 
 const HeroSection = () => {
   return (
@@ -120,7 +121,7 @@ const HeroSection = () => {
               >
                 {/* Profile Image */}
                 <img 
-                  src="/profile.jpg" 
+                  src={profileImage} 
                   alt={personalInfo.name}
                   className="w-full h-full object-cover"
                   onError={(e) => {

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 // import { personalInfo } from '../utils/data'
+import profileImage from '../assets/images/profile.jpg'
 
 const About = () => {
   const skills = [
@@ -65,7 +66,7 @@ const About = () => {
                 <div className="w-80 h-80 lg:w-64 lg:h-64 bg-gradient-to-r from-dark-800 to-dark-700 border-4 border-dark-600 rounded-full flex items-center justify-center overflow-hidden shadow-xl">
                   {/* Replace with actual profile image: place your photo in public/profile.jpg */}
                   <img 
-                    src="/profile.jpg" 
+                    src={profileImage} 
                     alt="Anugrah Vaishnav"
                     className="w-full h-full object-cover"
                     onError={(e) => {
