@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import CharacterTypeWriter from './CharacterTypeWriter'
 import { personalInfo, socialLinks } from '../utils/data'
-import { getAssetPath } from '../utils/assets'
 
 const HeroSection = () => {
   return (
@@ -82,7 +81,7 @@ const HeroSection = () => {
               <motion.button
                 onClick={() => {
                   const link = document.createElement('a')
-                  link.href = getAssetPath('/cv.pdf')
+                  link.href = '/cv.pdf'
                   link.download = 'Anugrah_Vaishnav_CV.pdf'
                   link.click()
                 }}
@@ -121,7 +120,7 @@ const HeroSection = () => {
               >
                 {/* Profile Image */}
                 <img 
-                  src={getAssetPath('/profile.jpg')} 
+                  src="/profile.jpg" 
                   alt={personalInfo.name}
                   className="w-full h-full object-cover"
                   onError={(e) => {

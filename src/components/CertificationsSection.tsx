@@ -75,7 +75,21 @@ const CertificationsSection = () => {
                     src={cert.logo} 
                     alt={`${cert.provider} logo`}
                     className="w-14 h-14 object-contain"
+                    onError={(e) => {
+                      // Fallback if image doesn't load
+                      const imgElement = e.currentTarget;
+                      const fallbackDiv = imgElement.nextElementSibling as HTMLElement;
+                      imgElement.style.display = 'none';
+                      if (fallbackDiv) {
+                        fallbackDiv.style.display = 'flex';
+                      }
+                    }}
+                    onLoad={() => console.log(`✅ Certificate image loaded: ${cert.logo}`)}
                   />
+                  {/* Fallback content */}
+                  <div className="hidden w-14 h-14 items-center justify-center text-2xl text-primary-500" style={{display: 'none'}}>
+                    <i className="fas fa-certificate"></i>
+                  </div>
                 </motion.div>
 
                 {/* Content */}

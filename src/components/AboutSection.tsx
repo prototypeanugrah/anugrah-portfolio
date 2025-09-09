@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import { getAssetPath } from '../utils/assets'
 
 const AboutSection = () => {
 
@@ -9,10 +8,10 @@ const AboutSection = () => {
     { name: 'PyTorch', icon: 'fas fa-fire', color: 'text-orange-400', type: 'fontawesome' },
     { name: 'Spark', icon: 'fas fa-bolt', color: 'text-yellow-400', type: 'fontawesome' },
     { name: 'R', icon: 'fab fa-r-project', color: 'text-blue-400', type: 'fontawesome' },
-    { name: 'TensorFlow', icon: getAssetPath('/images/tech-stack/tf.png'), color: 'text-orange-400', type: 'image' },
-    { name: 'Scikit-learn', icon: getAssetPath('/images/tech-stack/sklearn.png'), color: 'text-blue-300', type: 'image' },
-    { name: 'Pandas', icon: getAssetPath('/images/tech-stack/pandas.png'), color: 'text-blue-400', type: 'image' },
-    { name: 'Jupyter', icon: getAssetPath('/images/tech-stack/jupyter.png'), color: 'text-blue-500', type: 'image' },
+    { name: 'TensorFlow', icon: '/images/tech-stack/tf.png', color: 'text-orange-400', type: 'image' },
+    { name: 'Scikit-learn', icon: '/images/tech-stack/sklearn.png', color: 'text-blue-300', type: 'image' },
+    { name: 'Pandas', icon: '/images/tech-stack/pandas.png', color: 'text-blue-400', type: 'image' },
+    { name: 'Jupyter', icon: '/images/tech-stack/jupyter.png', color: 'text-blue-500', type: 'image' },
     { name: 'Docker', icon: 'fab fa-docker', color: 'text-blue-400', type: 'fontawesome' },
     { name: 'AWS', icon: 'fab fa-aws', color: 'text-orange-400', type: 'fontawesome' },
     { name: 'Git', icon: 'fab fa-git-alt', color: 'text-orange-500', type: 'fontawesome' },
@@ -81,7 +80,7 @@ const AboutSection = () => {
               {/* Main image container with glassmorphism effect */}
               <div className="relative bg-gradient-to-br from-white/5 via-white/10 to-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 shadow-2xl">
                 <img 
-                  src={getAssetPath('/images/tech-stack/man-working-on-laptop.svg')} 
+                  src="/images/tech-stack/man-working-on-laptop.svg" 
                   alt="Person working on laptop" 
                   className="w-full h-auto relative z-10 drop-shadow-2xl"
                 />
