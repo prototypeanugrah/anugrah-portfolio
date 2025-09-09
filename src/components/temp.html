@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Workspace Visualization</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the visualization */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            overflow: hidden;
+        }
+
+        #visualization-container {
+            transition: background-color 0.5s ease;
+        }
+
+        /* Animations */
+        @keyframes typing {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-2px); }
+        }
+
+        @keyframes headBob {
+            0%, 100% { transform: rotate(0.5deg) translateX(1px); }
+            50% { transform: rotate(0deg) translateX(0); }
+        }
+
+        @keyframes screenGlow {
+            0%, 100% { filter: drop-shadow(0 0 3px rgba(180, 210, 255, 0.4)); }
+            50% { filter: drop-shadow(0 0 8px rgba(180, 210, 255, 0.7)); }
+        }
+
+        /* Assigning animations */
+        #person-arm {
+            animation: typing 0.7s infinite ease-in-out;
+        }
+        #person-head {
+            animation: headBob 2.5s infinite ease-in-out;
+            transform-origin: bottom center;
+        }
+        #laptop-screen, #top-monitor {
+            animation: screenGlow 3s infinite ease-in-out;
+        }
+
+        /* --- Focus Mode --- */
+        .focus-mode #desk,
+        .focus-mode #picture-frame,
+        .focus-mode #glass {
+            opacity: 0.3;
+            transition: opacity 0.5s ease;
+        }
+
+        .focus-mode #laptop-screen,
+        .focus-mode #top-monitor {
+            animation-duration: 1.5s;
+        }
+        
+        .focus-mode #person-arm {
+            animation-duration: 0.4s;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen p-4">
+
+    <div id="visualization-container" class="w-full max-w-4xl bg-white rounded-xl shadow-lg p-6">
+        <!-- SVG Visualization -->
+        <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+            <!-- Colors defined here for clarity, though fills are inline -->
+            <defs>
+                <style>
+                    .clr-desk { fill: #D1E0E0; }
+                    .clr-chair { fill: #4A5568; }
+                    .clr-skin { fill: #FFDAB9; }
+                    .clr-shirt { fill: #4299E1; }
+                    .clr-hair { fill: #1A202C; }
+                    .clr-laptop { fill: #E2E8F0; }
+                    .clr-laptop-dark { fill: #CBD5E0; }
+                    .clr-screen { fill: #FFFFFF; }
+                    .clr-frame { fill: #F7FAFC; }
+                    .clr-frame-inner { fill: #FEEBC8; }
+                    .clr-glass { fill: #EBF8FF; }
+                    .clr-socks { fill: #2D3748; }
+                </style>
+            </defs>
+
+            <!-- Background Elements -->
+            <g id="top-monitor">
+                <rect x="250" y="50" width="220" height="110" rx="8" fill="#E2E8F0" stroke="#CBD5E0" stroke-width="2"/>
+                <rect x="255" y="55" width="210" height="100" rx="4" fill="#FFFFFF"/>
+            </g>
+
+            <!-- Desk -->
+            <g id="desk">
+                <path d="M 50 500 L 100 250 L 115 250 L 65 500 Z" fill="#D1E0E0" />
+                <path d="M 750 500 L 700 250 L 685 250 L 735 500 Z" fill="#D1E0E0" />
+                <rect x="40" y="240" width="720" height="15" fill="#D1E0E0" />
+            </g>
+
+            <!-- Accessories on Desk -->
+            <g id="picture-frame">
+                 <path d="M 150 240 L 140 180 L 190 180 L 200 240 Z" fill="#F7FAFC" stroke="#E2E8F0" stroke-width="2"/>
+                 <rect x="145" y="185" width="40" height="35" fill="#FEEBC8" />
+            </g>
+            <g id="glass">
+                <path d="M 680 240 L 685 210 L 715 210 L 720 240 Z" fill="#EBF8FF" opacity="0.8"/>
+            </g>
+
+            <!-- Laptop -->
+            <g id="laptop">
+                <path d="M 320 330 L 480 330 L 500 255 L 300 255 Z" fill="#CBD5E0"/>
+                <g id="laptop-screen">
+                    <path d="M 300 255 L 500 255 L 480 120 L 320 120 Z" fill="#E2E8F0"/>
+                    <path d="M 325 125 L 475 125 L 495 250 L 305 250 Z" fill="#FFFFFF" stroke="#EDF2F7" stroke-width="1.5"/>
+                    <!-- Screen Content -->
+                    <rect x="340" y="150" width="120" height="8" rx="2" fill="#E2E8F0"/>
+                    <rect x="340" y="165" width="90" height="8" rx="2" fill="#E2E8F0"/>
+                </g>
+            </g>
+
+            <!-- Chair -->
+            <g id="chair">
+                <rect x="495" y="320" width="10" height="100" fill="#CBD5E0" />
+                <path d="M 450 420 L 550 420 L 530 440 L 470 440 Z" fill="#A0AEC0"/>
+                <path id="chair-seat" d="M 380 310 C 370 340, 580 340, 570 310 L 550 330 L 400 330 Z" fill="#4A5568"/>
+                <path id="chair-back" d="M 520 180 C 580 180, 590 320, 540 330 L 510 330 C 470 320, 480 180, 520 180 Z" fill="#4A5568"/>
+            </g>
+
+            <!-- Person -->
+            <g id="person">
+                <g id="person-legs">
+                    <path d="M 420 320 C 400 400, 410 490, 410 490 L 440 490 C 440 490, 460 380, 450 320 Z" fill="#FFDAB9"/>
+                     <path d="M 460 320 C 470 400, 480 490, 480 490 L 510 490 C 510 490, 500 380, 480 320 Z" fill="#FFDAB9"/>
+                </g>
+                <g id="person-feet">
+                    <!-- Left foot -->
+                    <rect x="410" y="490" width="30" height="10" fill="#2D3748"/>
+                    <path d="M 405 480 L 445 480 L 445 490 L 405 490 Z" fill="#1A202C"/>
+                    <!-- Right foot -->
+                    <rect x="480" y="490" width="30" height="10" fill="#2D3748"/>
+                    <path d="M 475 480 L 515 480 L 515 490 L 475 490 Z" fill="#1A202C"/>
+                </g>
+                <g id="person-body">
+                    <path d="M 400 320 C 450 320, 480 180, 480 180 L 510 190 C 510 190, 500 340, 410 330 Z" fill="#4299E1"/>
+                </g>
+                 <g id="person-arm">
+                    <path d="M 400 240 C 430 250, 430 260, 410 260 L 380 250 C 370 240, 380 240, 400 240 Z" fill="#FFDAB9"/>
+                </g>
+                <g id="person-head" transform="translate(0, 0)">
+                    <circle cx="450" cy="160" r="30" fill="#FFDAB9"/>
+                    <path d="M 430 130 C 450 115, 480 130, 475 160 C 475 160, 425 160, 430 130 Z" fill="#1A202C"/>
+                </g>
+            </g>
+        </svg>
+    </div>
+
+    <div class="mt-6 flex items-center justify-center space-x-4">
+        <button id="focusToggle" class="px-5 py-2.5 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition-all">
+            Toggle Focus Mode
+        </button>
+    </div>
+
+    <script type="module">
+        // TypeScript code for interactivity
+        const focusToggleButton = document.getElementById('focusToggle');
+        const visualizationContainer = document.getElementById('visualization-container');
+
+        if (focusToggleButton && visualizationContainer) {
+            focusToggleButton.addEventListener('click', () => {
+                // Toggle a class on the main container to trigger CSS changes
+                visualizationContainer.classList.toggle('focus-mode');
+
+                // Update button text
+                const isFocused = visualizationContainer.classList.contains('focus-mode');
+                focusToggleButton.textContent = isFocused ? 'Exit Focus Mode' : 'Enter Focus Mode';
+            });
+        }
+    </script>
+</body>
+</html>
