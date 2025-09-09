@@ -160,7 +160,7 @@ const CV = () => {
         >
           <h2 className="text-3xl font-bold text-primary-400 mb-8 flex items-center gap-3">
             <i className="fas fa-code"></i>
-            Selected Projects
+            Projects
           </h2>
           <div className="grid lg:grid-cols-2 gap-8">
             {projects.map((project, index) => (
