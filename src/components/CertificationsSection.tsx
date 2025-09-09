@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion'
+import courseraLogo from '../assets/images/certificate-icons/coursera.png'
+import deepLearningLogo from '../assets/images/certificate-icons/deeplearning-ai.png'
 
 interface Certification {
   id: string;
@@ -17,7 +19,7 @@ const CertificationsSection = () => {
       id: 'google-data-analytics',
       title: 'Google Data Analytics Certificate from Google',
       provider: 'Coursera',
-      logo: 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera-course-photos/fb/e5dd40c25111e682afb38fbf12db24/Coursera_Lettermark_Logo_Full_RGB.png?auto=format%2Ccompress&dpr=1',
+      logo: courseraLogo,
       description: 'Comprehensive program covering Google Data Analytics tools and techniques.',
       links: [
         { type: 'certificate', url: 'https://coursera.org/share/b7da2a332f47cfceb70be7b4c11c2639'}
@@ -27,8 +29,7 @@ const CertificationsSection = () => {
       id: 'frontend-dev',
       title: 'Natural Language Processing with Classification and Vector Spaces',
       provider: 'DeepLearning.AI', 
-      logoIcon: 'fas fa-brain',
-      logoColor: 'text-blue-600',
+      logo: deepLearningLogo,
       description: 'Comprehensive program covering Natural Language Processing tools and techniques.',
       links: [
         { type: 'certificate', url: 'https://coursera.org/share/c01f3f98e0904ad10f02f2f74c961451' }
