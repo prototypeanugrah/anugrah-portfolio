@@ -2,11 +2,12 @@ import { motion } from 'framer-motion'
 import { education, workExperience, researchExperience, projects } from '../utils/data'
 import ExperienceCard from '../components/ExperienceCard'
 import ProjectCard from '../components/ProjectCard'
+import { getAssetPath } from '../utils/assets'
 
 const CV = () => {
   const downloadCV = () => {
     const link = document.createElement('a')
-    link.href = '/cv.pdf' // Place your CV in public folder
+    link.href = getAssetPath('/cv.pdf') // Place your CV in public folder
     link.download = 'Anugrah_Vaishnav_CV.pdf'
     link.click()
   }
