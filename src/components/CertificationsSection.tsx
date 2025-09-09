@@ -1,12 +1,23 @@
 import { motion } from 'framer-motion'
 
+interface Certification {
+  id: string;
+  title: string;
+  provider: string;
+  logo?: string;
+  logoIcon?: string;
+  logoColor?: string;
+  description: string;
+  links: Array<{ type: string; url: string }>;
+}
+
 const CertificationsSection = () => {
-  const certifications = [
+  const certifications: Certification[] = [
     {
       id: 'google-data-analytics',
       title: 'Google Data Analytics Certificate from Google',
       provider: 'Coursera',
-      logo: '/images/certificate-icons/coursera.png',
+      logo: 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera-course-photos/fb/e5dd40c25111e682afb38fbf12db24/Coursera_Lettermark_Logo_Full_RGB.png?auto=format%2Ccompress&dpr=1',
       description: 'Comprehensive program covering Google Data Analytics tools and techniques.',
       links: [
         { type: 'certificate', url: 'https://coursera.org/share/b7da2a332f47cfceb70be7b4c11c2639'}
@@ -16,7 +27,8 @@ const CertificationsSection = () => {
       id: 'frontend-dev',
       title: 'Natural Language Processing with Classification and Vector Spaces',
       provider: 'DeepLearning.AI', 
-      logo: '/images/certificate-icons/deeplearning-ai.png',
+      logoIcon: 'fas fa-brain',
+      logoColor: 'text-blue-600',
       description: 'Comprehensive program covering Natural Language Processing tools and techniques.',
       links: [
         { type: 'certificate', url: 'https://coursera.org/share/c01f3f98e0904ad10f02f2f74c961451' }
@@ -71,24 +83,28 @@ const CertificationsSection = () => {
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <img 
-                    src={cert.logo} 
-                    alt={`${cert.provider} logo`}
-                    className="w-14 h-14 object-contain"
-                    onError={(e) => {
-                      // Fallback if image doesn't load
-                      const imgElement = e.currentTarget;
-                      const fallbackDiv = imgElement.nextElementSibling as HTMLElement;
-                      imgElement.style.display = 'none';
-                      if (fallbackDiv) {
-                        fallbackDiv.style.display = 'flex';
-                      }
-                    }}
-                    onLoad={() => console.log(`✅ Certificate image loaded: ${cert.logo}`)}
-                  />
-                  {/* Fallback content */}
-                  <div className="hidden w-14 h-14 items-center justify-center text-2xl text-primary-500" style={{display: 'none'}}>
-                    <i className="fas fa-certificate"></i>
+                  {cert.logo ? (
+                    <img 
+                      src={cert.logo} 
+                      alt={`${cert.provider} logo`}
+                      className="w-14 h-14 object-contain"
+                      onError={(e) => {
+                        // Fallback if image doesn't load
+                        const imgElement = e.currentTarget;
+                        const fallbackDiv = imgElement.nextElementSibling as HTMLElement;
+                        imgElement.style.display = 'none';
+                        if (fallbackDiv) {
+                          fallbackDiv.style.display = 'flex';
+                        }
+                      }}
+                    />
+                  ) : null}
+                  {/* Icon logo or fallback */}
+                  <div 
+                    className={`w-14 h-14 items-center justify-center text-3xl ${cert.logoColor || 'text-primary-500'} ${cert.logo ? 'hidden' : 'flex'}`}
+                    style={cert.logo ? {display: 'none'} : {display: 'flex'}}
+                  >
+                    <i className={cert.logoIcon || 'fas fa-certificate'}></i>
                   </div>
                 </motion.div>
 
